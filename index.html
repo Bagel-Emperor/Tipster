@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Productivity Tips</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 2em;
+        }
+
+        .tip-display {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 5px solid #667eea;
+        }
+
+        .tip-text {
+            font-size: 1.2em;
+            line-height: 1.5;
+            color: #555;
+            font-style: italic;
+        }
+
+        .generate-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin: 10px;
+        }
+
+        .generate-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .generate-btn:active {
+            transform: translateY(0);
+        }
+
+        .tip-counter {
+            color: #666;
+            margin-top: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 1.5em;
+            }
+            
+            .tip-text {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🚀 Productivity Tips</h1>
+        <div class="tip-display">
+            <div class="tip-text" id="tipText">
+                Click the button below to get a random productivity tip!
+            </div>
+        </div>
+        <button class="generate-btn" onclick="generateTip()">Get New Tip</button>
+        <div class="tip-counter" id="counter">Tips generated: 0</div>
+    </div>
+
+    <script>
+        const productivityTips = [
+            "Use the Pomodoro Technique: Work for 25 minutes, then take a 5-minute break.",
+            "Start your day with the most important task - eat that frog first!",
+            "Keep a 'done' list alongside your to-do list to track accomplishments.",
+            "Use the 2-minute rule: If something takes less than 2 minutes, do it now.",
+            "Batch similar tasks together to minimize context switching.",
+            "Turn off non-essential notifications during focused work time.",
+            "Plan your next day the evening before to hit the ground running.",
+            "Use time blocking to allocate specific time slots for different activities.",
+            "Take regular breaks to maintain focus and prevent burnout.",
+            "Keep your workspace clean and organized for better mental clarity.",
+            "Use the Eisenhower Matrix to prioritize tasks by urgency and importance.",
+            "Set specific, measurable goals rather than vague intentions.",
+            "Learn to say 'no' to commitments that don't align with your priorities.",
+            "Use keyboard shortcuts to save time on repetitive computer tasks.",
+            "Review and reflect on your productivity weekly to identify improvements.",
+            "Eliminate or delegate tasks that don't add significant value.",
+            "Use natural light and maintain good posture while working.",
+            "Keep a notebook handy to capture ideas and prevent mental clutter.",
+            "Set boundaries between work and personal time for better balance.",
+            "Focus on progress, not perfection - done is better than perfect."
+        ];
+
+        let tipCount = 0;
+
+        function generateTip() {
+            const randomIndex = Math.floor(Math.random() * productivityTips.length);
+            const tipElement = document.getElementById('tipText');
+            const counterElement = document.getElementById('counter');
+            
+            tipElement.textContent = productivityTips[randomIndex];
+            tipCount++;
+            counterElement.textContent = `Tips generated: ${tipCount}`;
+        }
+
+        // Generate an initial tip when the page loads
+        window.addEventListener('load', generateTip);
+    </script>
+</body>
+</html>
